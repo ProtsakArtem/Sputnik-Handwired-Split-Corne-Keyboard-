@@ -50,6 +50,8 @@ Affordable, handwired split keyboard build (~€20) using a Pro Micro NRF52840 (
 
 ---
 ### BOM and Pricing
+
+IMPORTANT: its M2 not M3 screws and heat inserts
 ![BOM and pricing](<images and media/BOM and price.png>)
 ## Build Instructions
 
