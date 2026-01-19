@@ -46,7 +46,10 @@ jobs:
       - name: Build (${{ matrix.board }}, ${{ matrix.shield }})
         run: |
           cd firmware/zmk-config
-          west build -s zmk/app -d build/${{ matrix.shield }} -b ${{ matrix.board }} -- -DSHIELD=${{ matrix.shield }} -DSHIELD_ROOT=$GITHUB_WORKSPACE/firmware/zmk-config
+          west build -s zmk/app -d build/${{ matrix.shield }} -b ${{ matrix.board }} -- \
+            -DSHIELD=${{ matrix.shield }} \
+            -DZEPHYR_EXTRA_MODULES=$GITHUB_WORKSPACE/firmware/zmk-config
+
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
