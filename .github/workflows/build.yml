@@ -6,6 +6,50 @@ on:
 
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
-    with:
-      config_path: firmware/zmk-config
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - board: nice_nano_v2
+            shield: corne_hw_left
+          - board: nice_nano_v2
+            shield: corne_hw_right
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install west
+        run: pip install west
+
+      - name: West init (local)
+        run: |
+          cd firmware/zmk-config
+          west init -l config
+
+      - name: West update
+        run: |
+          cd firmware/zmk-config
+          west update
+
+      - name: Zephyr export
+        run: |
+          cd firmware/zmk-config
+          west zephyr-export
+
+      - name: Build (${{ matrix.board }}, ${{ matrix.shield }})
+        run: |
+          cd firmware/zmk-config
+          west build -s zmk/app -d build/${{ matrix.shield }} -b ${{ matrix.board }} -- -DSHIELD=${{ matrix.shield }} -DSHIELD_ROOT=$GITHUB_WORKSPACE/firmware/zmk-config
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.shield }}-${{ matrix.board }}
+          path: firmware/zmk-config/build/${{ matrix.shield }}/zephyr/zmk.uf2
