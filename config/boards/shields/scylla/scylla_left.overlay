@@ -1,24 +1,26 @@
-/* Вставте це в scylla_left.overlay */
+/* scylla_left.overlay */
 #include "scylla.dtsi"
 
 &kscan0 {
-    /* Піни Стовпців ЛІВОЇ половини */
+    /* ЦЕЙ РЯДОК ВСЕ ВИПРАВИТЬ: */
+    diode-direction = "row2col"; 
+
+    /* Ваші піни (залиште як є) */
     col-gpios
-        = <&gpio0 2  GPIO_ACTIVE_HIGH> // Col 1
-        , <&gpio1 15 GPIO_ACTIVE_HIGH> // Col 2
-        , <&gpio1 13 GPIO_ACTIVE_HIGH> // Col 3
-        , <&gpio1 11 GPIO_ACTIVE_HIGH> // Col 4
-        , <&gpio0 10 GPIO_ACTIVE_HIGH> // Col 5
-        , <&gpio0 9  GPIO_ACTIVE_HIGH> // Col 6
+        = <&gpio0 2  GPIO_ACTIVE_HIGH>
+        , <&gpio1 15 GPIO_ACTIVE_HIGH>
+        , <&gpio1 13 GPIO_ACTIVE_HIGH>
+        , <&gpio1 11 GPIO_ACTIVE_HIGH>
+        , <&gpio0 10 GPIO_ACTIVE_HIGH>
+        , <&gpio0 9  GPIO_ACTIVE_HIGH>
         ;
 
-    /* Піни Рядків ЛІВОЇ половини */
     row-gpios
-        = <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 1 (Цифри)
-        , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 2 (QWERTY)
-        , <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 3 (ASDF)
-        , <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 4 (ZXCV)
-        , <&gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 5 (Thumb)
-        , <&gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 6 (Дублюємо Row 5, бо у вас там нема 6-го дроту)
+        = <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
         ;
 };
