@@ -1,0 +1,28 @@
+/* Вставте це в scylla_right.overlay */
+#include "scylla.dtsi"
+
+&default_transform {
+    col-offset = <6>; // Це каже контролеру, що це права частина (стовпці 6-11)
+};
+
+&kscan0 {
+    /* Піни Стовпців ПРАВОЇ половини (Ті самі, що і зліва) */
+    col-gpios
+        = <&gpio0 2  GPIO_ACTIVE_HIGH>
+        , <&gpio1 15 GPIO_ACTIVE_HIGH>
+        , <&gpio1 13 GPIO_ACTIVE_HIGH>
+        , <&gpio1 11 GPIO_ACTIVE_HIGH>
+        , <&gpio0 10 GPIO_ACTIVE_HIGH>
+        , <&gpio0 9  GPIO_ACTIVE_HIGH>
+        ;
+
+    /* Піни Рядків ПРАВОЇ половини (Ваш список) */
+    row-gpios
+        = <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 1
+        , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 2
+        , <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 3
+        , <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 4
+        , <&gpio1 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 5 (Thumb 1 - 1.06)
+        , <&gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 6 (Thumb 2 - 1.04)
+        ;
+};
