@@ -7,26 +7,26 @@
 
         default_layer {
             bindings = <
-                // Row 0 (Pin 0.24) - Мають бути Цифри
+                // Row 0 (Pin 0.22) -> Якщо це цифри, то запрацює
                 &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6
                 
-                // Row 1 (Pin 1.00) - QWERTY
+                // Row 1 (Pin 0.24) -> QWERTY (Перевірено)
                 &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y
                 
-                // Row 2 (Pin 0.11) - ASDF
+                // Row 2 (Pin 1.00) -> ASDF (Перевірено)
                 &kp A  &kp S  &kp D  &kp F  &kp G  &kp H
                 
-                // Row 3 (Pin 1.04) - ZXCV
+                // Row 3 (Pin 0.11) -> ZXCV (Перевірено)
                 &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N
                 
-                // Row 4 (Pin 1.06) - Палець (перевірка)
+                // Row 4 (Pin 1.04) -> ТЕСТ ПАЛЬЦЯ 1
                 &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6
                 
-                // Row 5 (Pin 0.22) - Палець (перевірка)
+                // Row 5 (Pin 1.06) -> ТЕСТ ПАЛЬЦЯ 2
                 &kp SPACE &kp ENTER &kp LALT &kp BSPC &kp TAB &kp ESC
                 
-                // Row 6 (Pin 0.20) - Палець (перевірка)
-                &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp PG_DN &kp PG_UP
+                // Row 6 (Pin 0.20) -> ТЕСТ "ЗАЙВОГО" ПІНА
+                &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp K_VOL_DN &kp K_VOL_UP
             >;
         };
     };
