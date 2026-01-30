@@ -23,7 +23,8 @@
                     <&gpio0 10 GPIO_ACTIVE_HIGH>,
                     <&gpio1 11 GPIO_ACTIVE_HIGH>,
                     <&gpio1 13 GPIO_ACTIVE_HIGH>,
-                    <&gpio1 15 GPIO_ACTIVE_HIGH>;
+                    <&gpio1 15 GPIO_ACTIVE_HIGH>,
+		    <&gpio1 2 GPIO_ACTIVE_HIGH>;
 
         diode-direction = "col2row";
         debounce-press-ms = <5>;
