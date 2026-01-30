@@ -29,7 +29,7 @@
                     <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // Row 1 (Ваш 2-й: QWERTY)
                     <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // Row 2 (Ваш 3-й: ASDF)
                     <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // Row 3 (Ваш 4-й: ZXCV)
-                    <&gpio1 17  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; // Row 4 (Ваш 5-й: Палець)
+                    <&gpio1 31  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; // Row 4 (Ваш 5-й: Палець)
 
         /* Стовпці (залишаємо ті, що працювали) */
         col-gpios = <&gpio0 9  GPIO_ACTIVE_HIGH>, 
