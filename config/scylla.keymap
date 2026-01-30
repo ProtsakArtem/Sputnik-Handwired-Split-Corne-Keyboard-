@@ -7,26 +7,22 @@
 
         default_layer {
             bindings = <
-                // Row 0 (Pin 0.22) -> Якщо це цифри, то запрацює
-                &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6
+                // Row 0: Цифри (Pin 0.22)
+                &kp ESC   &kp N1 &kp N2 &kp N3 &kp N4 &kp N5
                 
-                // Row 1 (Pin 0.24) -> QWERTY (Перевірено)
-                &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y
+                // Row 1: QWERTY (Pin 0.24)
+                &kp TAB   &kp Q  &kp W  &kp E  &kp R  &kp T
                 
-                // Row 2 (Pin 1.00) -> ASDF (Перевірено)
-                &kp A  &kp S  &kp D  &kp F  &kp G  &kp H
+                // Row 2: ASDF (Pin 1.00)
+                &kp LSHIFT &kp A  &kp S  &kp D  &kp F  &kp G
                 
-                // Row 3 (Pin 0.11) -> ZXCV (Перевірено)
-                &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N
+                // Row 3: ZXCV (Pin 0.11)
+                &kp LCTRL &kp Z  &kp X  &kp C  &kp V  &kp B
                 
-                // Row 4 (Pin 1.04) -> ТЕСТ ПАЛЬЦЯ 1
-                &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6
-                
-                // Row 5 (Pin 1.06) -> ТЕСТ ПАЛЬЦЯ 2
-                &kp SPACE &kp ENTER &kp LALT &kp BSPC &kp TAB &kp ESC
-                
-                // Row 6 (Pin 0.20) -> ТЕСТ "ЗАЙВОГО" ПІНА
-                &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp K_VOL_DN &kp K_VOL_UP
+                // Row 4: Великий палець (Pin 1.04)
+                // Тут 6 слотів, але кнопок у вас може бути 5 або 3. 
+                // Вони будуть серед цих клавіш:
+                &kp LBKT  &kp RBKT &kp SPACE &kp ENTER &kp BSPC &kp DEL
             >;
         };
     };
