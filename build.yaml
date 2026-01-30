@@ -5,5 +5,5 @@ include:
   - board: nice_nano
     shield: corne_hw_right
     cmake-args: -DZMK_EXTRA_MODULES=$GITHUB_WORKSPACE
-  - board: promicro_nrf52840
+  - board: nice_nano
     shield: scylla
