@@ -7,13 +7,18 @@
 
         default_layer {
             bindings = <
-/* Row 0 (має бути 0.20) */  &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6
-/* Row 1 (має бути 0.22) */  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y
-/* Row 2 (має бути 0.24) */  &kp A  &kp S  &kp D  &kp F  &kp G  &kp H
-/* Row 3 (має бути 1.00) */  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N
-/* Row 4 (має бути 0.11) */  &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp EQUAL
-/* Row 5 (має бути 1.04) */  &kp L  &kp M  &kp J  &kp K  &kp O  &kp P
-/* Row 6 (має бути 1.06) */  &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6
+                // Row 0: Цифри
+                &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6
+                // Row 1: QWERTY
+                &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y
+                // Row 2: ASDF
+                &kp A  &kp S  &kp D  &kp F  &kp G  &kp H
+                // Row 3: ZXCV
+                &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N
+                // Row 4: Thumb 1 (перевіряємо що тут)
+                &kp SPACE &kp ENTER &kp LALT &kp BSPC &kp TAB &kp ESC
+                // Row 5: Thumb 2 (або тут)
+                &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp K_VOL_DN &kp K_VOL_UP
             >;
         };
     };
