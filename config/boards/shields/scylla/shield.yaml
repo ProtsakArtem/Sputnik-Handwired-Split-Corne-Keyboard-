@@ -1,0 +1,7 @@
+identifier: scylla
+name: Scylla Handwired
+type: shield
+url: https://zmk.dev
+requires: []
+features:
+  - keys
