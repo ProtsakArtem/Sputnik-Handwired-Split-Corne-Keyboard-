@@ -11,13 +11,13 @@
         columns = <6>;
         rows = <7>;
         map = <
-            RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5) // Цифри
-            RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5) // QWERTY
-            RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) // ASDF
-            RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) // ZXCV
-            RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5) // Додатковий ряд (або частина тамб-кластера)
-            RC(5,0) RC(5,1) RC(5,2) RC(5,3) RC(5,4) RC(5,5) // Додатковий ряд
-            RC(6,0) RC(6,1) RC(6,2) RC(6,3) RC(6,4) RC(6,5) // Великий палець (Thumb cluster)
+            RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5) // Row 0: Цифри
+            RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5) // Row 1: QWERTY
+            RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) // Row 2: ASDF
+            RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) // Row 3: ZXCV
+            RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5) // Row 4: Палець 1
+            RC(5,0) RC(5,1) RC(5,2) RC(5,3) RC(5,4) RC(5,5) // Row 5: Палець 2
+            RC(6,0) RC(6,1) RC(6,2) RC(6,3) RC(6,4) RC(6,5) // Row 6: Палець 3 (Резерв)
         >;
     };
 
@@ -26,16 +26,16 @@
         label = "KSCAN";
         diode-direction = "col2row";
 
-        /* ПОВНИЙ СПИСОК РЯДКІВ (7 штук) */
-        row-gpios = <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // Row 0 (Цифри) - ПОВЕРНУВ ЙОГО!
-                    <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // Row 1 (QWERTY)
-                    <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // Row 2 (ASDF)
-                    <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // Row 3 (ZXCV)
-                    <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // Row 4 (Можливо частина пальця)
-                    <&gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // Row 5 (Можливо частина пальця)
-                    <&gpio1 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; // Row 6 (ТОЧНО Палець)
+        /* ЗСУНУТИЙ СПИСОК РЯДКІВ */
+        row-gpios = <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // Row 0 (Цифри)
+                    <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // Row 1 (QWERTY)
+                    <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // Row 2 (ASDF)
+                    <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // Row 3 (ZXCV)
+                    <&gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // Row 4 (Великий палець?)
+                    <&gpio1 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // Row 5 (Великий палець?)
+                    <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; // Row 6 (Той, що був першим)
 
-        /* РОЗВЕРНУТІ СТОВПЦІ (Тепер літери мають бути не дзеркальними) */
+        /* СТОВПЦІ (ЗАЛИШАЄМО ЯК БУЛО - ВОНИ ПРАЦЮЮТЬ) */
         col-gpios = <&gpio0 9  GPIO_ACTIVE_HIGH>, 
                     <&gpio0 10 GPIO_ACTIVE_HIGH>, 
                     <&gpio1 11 GPIO_ACTIVE_HIGH>, 
