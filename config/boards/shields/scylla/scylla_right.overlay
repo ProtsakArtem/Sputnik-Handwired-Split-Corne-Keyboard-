@@ -25,3 +25,7 @@
         , <&gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
         ;
 };
+/* Вимикаємо USB, щоб уникнути помилок компіляції на правій половині */
+&usbd {
+    status = "disabled";
+};
