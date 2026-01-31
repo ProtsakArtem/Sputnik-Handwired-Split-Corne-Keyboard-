@@ -1,1 +1,9 @@
 # Scylla shield
+
+config SHIELD_SCYLLA_LEFT
+	bool "Scylla Left"
+	select SHIELD
+
+config SHIELD_SCYLLA_RIGHT
+	bool "Scylla Right"
+	select SHIELD
