@@ -1,6 +1,0 @@
-id: scylla
-name: Scylla
-type: shield
-requires: []
-features:
-  - keys

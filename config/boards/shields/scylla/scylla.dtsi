@@ -27,9 +27,5 @@
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
         diode-direction = "col2row";
-        
-        /* Тут піни лишаємо пустими, вони заповнюються в overlay файлах */
-        row-gpios = <0>;
-        col-gpios = <0>;
     };
 };
