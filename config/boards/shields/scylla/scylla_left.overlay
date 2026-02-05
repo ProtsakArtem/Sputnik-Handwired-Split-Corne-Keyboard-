@@ -1,10 +1,13 @@
+#include "scylla.dtsi"
+
 / {
-    chosen { zmk,kscan = &kscan0; };
+    chosen {
+        zmk,kscan = &kscan0;
+        zmk,matrix-transform = &scylla_left_transform;
+    };
 
     kscan0: kscan0 {
         compatible = "zmk,kscan-gpio-matrix";
-
-        /* якщо в тебе діоди “навпаки” — row2col, і ти вже так працював */
         diode-direction = "row2col";
 
         /* rows: 4 основні + thumb + dummy */
