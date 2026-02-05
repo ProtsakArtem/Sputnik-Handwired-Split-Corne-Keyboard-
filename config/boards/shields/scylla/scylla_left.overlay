@@ -1,25 +1,27 @@
-#include "scylla.dtsi"
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+    };
+};
 
 &kscan0 {
-    diode-direction = "row2col"; // Ви це вже змінили - ОК
+    compatible = "zmk,kscan-gpio-matrix";
+    diode-direction = <ROW2COL>;
 
-    /* 1. СТОВПЦІ тепер "слухають", тому додаємо їм PULL_DOWN */
-    col-gpios
-        = <&gpio0 22  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&gpio1 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&gpio1 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&gpio0 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&gpio0 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        ;
+    row-gpios = <
+        &gpio0 2  GPIO_ACTIVE_HIGH   /* P0.02 */
+        &gpio1 15 GPIO_ACTIVE_HIGH   /* P1.15 */
+        &gpio1 13 GPIO_ACTIVE_HIGH   /* P1.13 */
+        &gpio1 11 GPIO_ACTIVE_HIGH   /* P1.11 */
+        &gpio0 10 GPIO_ACTIVE_HIGH   /* P0.10 — thumb row */
+    >;
 
-    /* 2. РЯДКИ тепер подають струм, прибираємо у них PULL_DOWN (залишаємо просто ACTIVE_HIGH) */
-    row-gpios
-        = <&gpio0 2 GPIO_ACTIVE_HIGH>
-        , <&gpio0 15 GPIO_ACTIVE_HIGH>
-        , <&gpio1 13  GPIO_ACTIVE_HIGH>
-        , <&gpio0 11 GPIO_ACTIVE_HIGH>
-        , <&gpio1 10  GPIO_ACTIVE_HIGH>
-        , <&gpio1 9  GPIO_ACTIVE_HIGH>
-        ;
+    col-gpios = <
+        &gpio0 22 GPIO_ACTIVE_HIGH   /* P0.22 */
+        &gpio0 24 GPIO_ACTIVE_HIGH   /* P0.24 */
+        &gpio1 0  GPIO_ACTIVE_HIGH   /* P1.00 */
+        &gpio0 11 GPIO_ACTIVE_HIGH   /* P0.11 */
+        &gpio1 4  GPIO_ACTIVE_HIGH   /* P1.04 */
+        &gpio1 6  GPIO_ACTIVE_HIGH   /* P1.06 */
+    >;
 };
