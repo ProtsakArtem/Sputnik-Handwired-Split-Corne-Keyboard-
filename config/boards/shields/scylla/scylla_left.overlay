@@ -5,14 +5,14 @@
 
     kscan0: kscan0 {
         compatible = "zmk,kscan-gpio-matrix";
-        diode-direction = <ROW2COL>;
+        diode-direction = "row2col";
 
         row-gpios = <
             &gpio0 2  GPIO_ACTIVE_HIGH   /* P0.02 */
             &gpio1 15 GPIO_ACTIVE_HIGH   /* P1.15 */
             &gpio1 13 GPIO_ACTIVE_HIGH   /* P1.13 */
             &gpio1 11 GPIO_ACTIVE_HIGH   /* P1.11 */
-            &gpio0 10 GPIO_ACTIVE_HIGH   /* P0.10 (thumb row) */
+            &gpio0 10 GPIO_ACTIVE_HIGH   /* P0.10 thumb row */
         >;
 
         col-gpios = <
