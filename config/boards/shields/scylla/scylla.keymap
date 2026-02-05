@@ -1,24 +1,53 @@
-/* Вставте це в scylla.keymap */
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
 
 / {
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
+        /* -------------------------
+         * LAYER 0: BASE
+         * ------------------------- */
+        base_layer {
             bindings = <
-// ЛІВА РУКА ---------------------------------------   // ПРАВА РУКА --------------------------------------
+/* L0 Row 0 */
 &kp ESC   &kp N1 &kp N2 &kp N3 &kp N4 &kp N5           &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp BSPC
+/* L0 Row 1 */
 &kp TAB   &kp Q  &kp W  &kp E  &kp R  &kp T            &kp Y  &kp U  &kp I  &kp O  &kp P  &kp LBKT
+/* L0 Row 2 */
 &kp LSHFT &kp A  &kp S  &kp D  &kp F  &kp G            &kp H  &kp J  &kp K  &kp L  &kp SEMI &kp SQT
+/* L0 Row 3 */
 &kp LCTRL &kp Z  &kp X  &kp C  &kp V  &kp B            &kp N  &kp M  &kp COMMA &kp DOT &kp FSLH &kp RSHFT
 
-// THUMB LEFT (5 кнопок)                               // THUMB RIGHT (Блок 1)
-&kp LBKT  &kp RBKT &kp SPACE &kp ENTER &kp BSPC &none  &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp PG_DN &kp PG_UP
+/* L0 Row 4: THUMBS */
+&kp LBKT  &kp RBKT &kp SPACE &kp ENTER &kp BSPC &mo 1  &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp PG_DN &kp PG_UP
 
-// DUMMY ROW (Ліва)                                    // THUMB RIGHT (Блок 2)
+/* L0 Row 5: DUMMY/EXTRA */
 &none     &none    &none     &none     &none    &none  &kp SPACE &kp RET  &kp HOME &kp END &kp DEL &kp RALT
+            >;
+        };
+
+        /* -------------------------
+         * LAYER 1: BLUETOOTH
+         * (утримуєш &mo 1 на лівому thumb -> цей шар)
+         * ------------------------- */
+        bt_layer {
+            bindings = <
+/* L1 Row 0 */
+&bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none      &none &none &none &none &none &none
+/* L1 Row 1 */
+&bt BT_CLR   &bt BT_NXT   &bt BT_PRV   &none        &none        &none      &none &none &none &none &none &none
+/* L1 Row 2 */
+&sys_reset   &bootloader  &none        &none        &none        &none      &none &none &none &none &none &none
+/* L1 Row 3 */
+&none        &none        &none        &none        &none        &none      &none &none &none &none &none &none
+
+/* L1 Row 4: THUMBS */
+&trans       &trans       &trans       &trans       &trans       &trans     &trans &trans &trans &trans &trans &trans
+
+/* L1 Row 5 */
+&none        &none        &none        &none        &none        &none      &none &none &none &none &none &none
             >;
         };
     };
