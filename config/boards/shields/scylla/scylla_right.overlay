@@ -3,14 +3,19 @@
 / {
     chosen {
         zmk,kscan = &kscan0;
-        zmk,matrix-transform = &scylla_right_transform;
+        zmk,matrix_transform = &default_transform;
+    };
+
+    /* ОФІЦІЙНИЙ спосіб: offset застосовується до transform, не до kscan */
+    &default_transform {
+        col-offset = <6>;
     };
 
     kscan0: kscan0 {
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
 
-        /* inputs -> PULL_DOWN (залишаю твій reversed порядок) */
+        /* тут залиш свої реальні піни правої половини */
         col-gpios = <
             &gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)
             &gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)
