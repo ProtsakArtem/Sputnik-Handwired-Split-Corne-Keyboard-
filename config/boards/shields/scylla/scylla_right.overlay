@@ -1,27 +1,31 @@
-#include "scylla.dtsi"
+/ {
+    chosen { zmk,kscan = &kscan0; };
 
-&default_transform {
-    col-offset = <6>;
-};
+    kscan0: kscan0 {
+        compatible = "zmk,kscan-gpio-matrix";
+        diode-direction = "col2row";
 
-&kscan0 {
-    /* Розвернутий порядок стовпців для виправлення дзеркальності */
-    col-gpios
-        = <&gpio0 9  GPIO_ACTIVE_HIGH> // Був останнім, став першим
-        , <&gpio0 10 GPIO_ACTIVE_HIGH>
-        , <&gpio1 11 GPIO_ACTIVE_HIGH>
-        , <&gpio1 13 GPIO_ACTIVE_HIGH>
-        , <&gpio1 15 GPIO_ACTIVE_HIGH>
-        , <&gpio0 2  GPIO_ACTIVE_HIGH> // Був першим, став останнім
-        ;
+        /* Права половина = колонки 6..11 у keymap */
+        col-offset = <6>;
 
-    /* Ваші піни рядків (залиште як було) */
-    row-gpios
-        = <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&gpio1 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        ;
+        /* ТВОЇ колонки (inputs) — додай PULL_DOWN якщо треба */
+        col-gpios = <
+            &gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)
+            &gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)
+            &gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)
+            &gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)
+            &gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)
+            &gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)
+        >;
+
+        /* ТВОЇ рядки (outputs) */
+        row-gpios = <
+            &gpio0 22 GPIO_ACTIVE_HIGH
+            &gpio0 24 GPIO_ACTIVE_HIGH
+            &gpio1 0  GPIO_ACTIVE_HIGH
+            &gpio0 11 GPIO_ACTIVE_HIGH
+            &gpio1 6  GPIO_ACTIVE_HIGH
+            &gpio1 4  GPIO_ACTIVE_HIGH
+        >;
+    };
 };

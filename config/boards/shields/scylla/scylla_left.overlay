@@ -4,10 +4,10 @@
     kscan0: kscan0 {
         compatible = "zmk,kscan-gpio-matrix";
 
-        /* якщо діоди “навпаки” як ти казав — зазвичай треба row2col */
+        /* якщо в тебе діоди “навпаки” — row2col, і ти вже так працював */
         diode-direction = "row2col";
 
-        /* rows = реальні ряди + dummy */
+        /* rows: 4 основні + thumb + dummy */
         row-gpios = <
             &gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)   /* P0.02 */
             &gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)   /* P1.15 */
@@ -17,14 +17,14 @@
             &gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)   /* P0.09 dummy row */
         >;
 
-        /* cols = 6 колонок, на входи ставимо PULL_DOWN */
+        /* cols: 6 колонок (inputs) -> PULL_DOWN */
         col-gpios = <
-            &gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)
-            &gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)
-            &gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)
-            &gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)
-            &gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)
-            &gpio1 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)
+            &gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* P0.22 */
+            &gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* P0.24 */
+            &gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* P1.00 */
+            &gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* P0.11 */
+            &gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* P1.04 */
+            &gpio1 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* P1.06 */
         >;
     };
 };
