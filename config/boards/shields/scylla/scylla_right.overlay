@@ -1,24 +1,32 @@
 #include "scylla.dtsi"
 
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/pinctrl/nrf-pinctrl.h>
+
 / {
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
     };
+
+    /* Wired split instance (UART) */
+    wired_split: wired_split {
+        compatible = "zmk,wired-split";
+        device = <&uart0>;
+    };
 };
 
-/* offset правої половини робимо через transform */
+/* offset правої половини через transform */
 &default_transform {
     col-offset = <6>;
 };
 
-/* СТВОРЮЄМО kscan0 (а не &kscan0) */
 &{/} {
     kscan0: kscan0 {
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
 
-        /* Розвернутий порядок стовпців (inputs) */
+        /* cols (inputs) */
         col-gpios = <
             &gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)
             &gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)
@@ -28,7 +36,7 @@
             &gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)
         >;
 
-        /* Рядки (outputs) — БЕЗ PULL_DOWN */
+        /* rows (outputs) */
         row-gpios = <
             &gpio0 22 GPIO_ACTIVE_HIGH
             &gpio0 24 GPIO_ACTIVE_HIGH
@@ -38,4 +46,28 @@
             &gpio1 4  GPIO_ACTIVE_HIGH
         >;
     };
+};
+
+/* UART0 pinctrl (same as left) */
+&pinctrl {
+    uart0_default: uart0_default {
+        group1 {
+            psels = <NRF_PSEL(UART_TX, 0, 17)>, <NRF_PSEL(UART_RX, 0, 20)>;
+        };
+    };
+
+    uart0_sleep: uart0_sleep {
+        group1 {
+            psels = <NRF_PSEL(UART_TX, 0, 17)>, <NRF_PSEL(UART_RX, 0, 20)>;
+            low-power-enable;
+        };
+    };
+};
+
+&uart0 {
+    status = "okay";
+    current-speed = <115200>;
+    pinctrl-0 = <&uart0_default>;
+    pinctrl-1 = <&uart0_sleep>;
+    pinctrl-names = "default", "sleep";
 };
