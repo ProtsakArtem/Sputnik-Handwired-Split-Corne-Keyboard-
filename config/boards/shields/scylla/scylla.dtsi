@@ -34,3 +34,8 @@
         device = <&pro_micro_serial>;
     };
 };
+
+/* На всяк випадок: переконуємось, що UART нода точно "okay" */
+&pro_micro_serial {
+    status = "okay";
+};
