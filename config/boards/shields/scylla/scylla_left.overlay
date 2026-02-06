@@ -10,17 +10,22 @@
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "row2col";
 
-        /* rows: 4 основні + thumb + dummy */
+        /*
+         * ROWS = outputs  (NO pulls)
+         * COLS = inputs   (pull-down)
+         *
+         * IMPORTANT: You had P0.09 / P0.10 swapped in comments vs numbers.
+         */
+
         row-gpios = <
-            &gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)   /* P0.02 */
-            &gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)   /* P1.15 */
-            &gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)   /* P1.13 */
-            &gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)   /* P1.11 */
-            &gpio0 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)   /* P0.10 thumb row */
-            &gpio0 10  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)   /* P0.09 dummy row */
+            &gpio0 2   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)   /* P0.02 */
+            &gpio1 15  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)   /* P1.15 */
+            &gpio1 13  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)   /* P1.13 */
+            &gpio1 11  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)   /* P1.11 */
+            &gpio0 10  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)   /* P0.10 thumb row */
+            &gpio0 9   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)   /* P0.09 dummy row */
         >;
 
-        /* cols: 6 колонок (inputs) */
         col-gpios = <
             &gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* P0.22 */
             &gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) /* P0.24 */
